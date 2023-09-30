@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <script src="leader-line.min.js"></script>
+    <script src="arrows.js" defer></script>
+    </script>
     <style>
         .start, .end {
             width: 100px;
@@ -57,28 +60,59 @@
             border: 1px solid orange;
             transform: rotateX(45deg) rotateZ(45deg);
         }
+        .ifWrapper {
+            /* display: inline-block; */
+            display: flex;
+        }
     </style>
     <body>
-        <div class="start">Start</div>
-        <div class="insert">
-<div class="arrow">|<br>|<br><br>|<br>|<br>V</div>
+        <div class="start" id="start">Start</div>
+        <div class="insert" id="insert"><div class="assign" id="1630268260016" data-parent="-1">
+x = 10
+</div>
 
-<div class="assign">x = 10</div>
+<div class="ifWrapper">
 
-<div class="if">If x Lt 20:</div>
+<div class="if" id="1630268259968" data-parent="-1">
+if (x < 20)
+</div>
 
-<div class="assign">x = 25</div>
+<div class="assign" id="1630268260304" data-parent="1630268259968">
+x = 25
+</div>
 
-<div class="if">If x Eq 20:</div>
+<div class="assign" id="1630268259584" data-parent="1630268259968">
+x = 26
+</div>
 
-<div class="assign">x = 31</div>
+<div class="expr" id="1630268259488" data-parent="1630268259968">
+print((x + 10))
+</div>
 
-<div class="assign">x = 30</div>
+</div>
 
-<div class="expr">print(x)</div>
+<div class="ifWrapper">
+
+<div class="if" id="1630268259296" data-parent="1630268259968">
+if (x == 20)
+</div>
+
+<div class="assign" id="1630268259200" data-parent="1630268259296">
+x = 31
+</div>
+
+</div>
+
+<div class="assign" id="1630268259248" data-parent="1630268259296">
+x = 30
+</div>
+
+<div class="expr" id="1630268260256" data-parent="-1">
+print(x)
+</div>
 
 
         </div>
-        <div class="end">End</div>
+        <div class="end" id="end">End</div>
     </body>
 </html>
