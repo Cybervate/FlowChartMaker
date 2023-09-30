@@ -2,6 +2,7 @@ import ast
 from redbaron import RedBaron
 #from bs4 import BeautifulSoup as Soup
 from collections import deque
+from obs import codeItem
 
 def walk(node):
     queue = deque([node])
@@ -18,16 +19,20 @@ with open('import.html', "r") as h:
 filename = "ExampleCode.py"
 
 def addArrow(text):
-    return f'\n<div class="arrow">|<br>|<br>{text}<br>|<br>|<br>V</div>\n\n'
+    global html
+    html += f'\n<div class="arrow">|<br>|<br>{text}<br>|<br>|<br>V</div>\n\n'
 
 def assign(code):
-    return f'<div class="assign">{code}</div>\n\n'
+    global html
+    html += f'<div class="assign">{code}</div>\n\n'
 
 def exprFunc(code):
-    return f'<div class="expr">{code}</div>\n\n'
+    global html
+    html += f'<div class="expr">{code}</div>\n\n'
 
 def ifFunc(code):
-    return f'<div class="if">{code}</div>\n\n'
+    global html
+    html += f'<div class="if">{code}</div>\n\n'
 
 class Visitor(ast.NodeVisitor):
     def generic_visit(self, node):
@@ -48,22 +53,19 @@ class Visitor(ast.NodeVisitor):
         print("Print: ")
 
     def visit_Assign(self, node):
-        global html
         info = f"{node.targets[0].id} = {node.value.value}"
         print(f"Assign: {info}")
-        html += assign(info)
+        assign(info)
 
     def visit_Expr(self, node):
-        global html
         info = f'{node.value.func.id}({node.value.args[0].id})'
         print(f'Expr: {info}')
-        html += exprFunc(info)
+        exprFunc(info)
 
     def visit_If(self, node):
-        global html
         info = f'If {node.test.left.id} {str(node.test.ops[0].__class__).split(".")[-1][:-2]} {node.test.comparators[0].value}:'
         print(info)
-        html += ifFunc(info)
+        ifFunc(info)
         
         print("THEN")
         ast.NodeVisitor.visit(self, node.body[0])
@@ -78,7 +80,7 @@ tree = ast.parse(file.read())
 v = Visitor()
 print(ast.dump(tree, indent=4))
 
-html += addArrow('')
+addArrow('')
 
 for node in walk(tree):
     v.visit(node)
