@@ -1,6 +1,6 @@
 import ast
 from redbaron import RedBaron
-from bs4 import BeautifulSoup as Soup
+#from bs4 import BeautifulSoup as Soup
 from collections import deque
 
 def walk(node):
@@ -16,6 +16,9 @@ with open('import.html', "r") as h:
     html = h.read()
 
 filename = "ExampleCode.py"
+
+def addArrow(text):
+    return f'\n<div class="arrow">|<br>|<br>{text}<br>|<br>|<br>V</div>\n\n'
 
 def assign(code):
     return f'<div class="assign">{code}</div>\n\n'
@@ -74,6 +77,8 @@ file = open(filename, "r")
 tree = ast.parse(file.read())
 v = Visitor()
 print(ast.dump(tree, indent=4))
+
+html += addArrow('')
 
 for node in walk(tree):
     v.visit(node)
