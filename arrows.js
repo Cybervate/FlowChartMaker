@@ -15,14 +15,16 @@ function loop(list, nextElem, startDirection, endDirection, side) {
         
         if (i + 1 < list.length) {
             if (list.item(i).className == 'ifWrapper') {
-
                 new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 0,y: 50}), {startLabel: 'false'})
 
-                
-
-                for (let j = i; j < list.length; j++) {
-                    if (list.item(j).getAttribute('data-parent') != list.item(i).getAttribute('data-parent')) {
+                for (let j = i + 1; j < list.length; j++) {
+                    if (list.item(j).className.indexOf('Wrapper') > 0 && list.item(j).children[0].getAttribute('data-parent') != list.item(i).children[1].getAttribute('data-parent')) {
+                        next = list.item(j).children[0]
+                        break
+                    }
+                    else if (list.item(j).getAttribute('data-parent') != list.item(i).children[1].getAttribute('data-parent')) {
                         next = list.item(j)
+                        break
                     }
                 }
                 loop(list.item(i).children, next, 'right', 'right')
@@ -32,10 +34,18 @@ function loop(list, nextElem, startDirection, endDirection, side) {
                 
                 loop(list.item(i).children, list.item(i).children.item(0), 'top', 'top', 0.5)
             }
+            else if (list.item(i).className == 'forWrapper') {
+                new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 0,y: 50}), {startLabel: 'After loop'}) 
+
+                loop(list.item(i).children, list.item(i).children.item(0), 'top', 'top', 0.5)
+            }
             else if (list.item(i).className == 'while') {
                 new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 50,y: 50}), {startLabel: 'True'})
 
                 
+            }
+            else if (list.item(i).className == 'for') {
+                new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 50,y: 50}), {startLabel: 'Loop'})
             }
             else if (list.item(i).className == 'if') {
                 new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 50,y: 50}), {startLabel: 'True'})

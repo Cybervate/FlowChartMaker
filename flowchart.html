@@ -40,7 +40,7 @@
             padding: 20px;
             margin: 30px;
         }
-        .if, .while {
+        .if, .while, .for {
             width: 100px;
             height: 50px;
             background: #ccc;
@@ -82,74 +82,57 @@
             /* display: inline-block; */
             /* display: flex; */
         }
-        .ifWrapper > div, .whileWrapper > div {
+        .ifWrapper > div, .whileWrapper > div, .forWrapper > div {
             /* float: left; */
             display: inline-block;
         }
     </style>
     <body>
         <div class="start" id="start">Start</div>
-        <div class="insert" id="insert"><div class="assign" id="2034412155232" data-parent="-1">
-income = float(input("Please Enter employee's annual taxable income ... CAD($) "))
-</div>
-
-<div class="whileWrapper"><div class="while" id="2034412156816" data-parent="-1">
-while (income < 0)
-</div>
-
-<div class="assign" id="2034412156912" data-parent="2034412156816">
-income = float(input("Value must be positive. Please Enter employee's annual taxable income ... CAD($) "))
-</div>
-
+        <div class="insert" id="insert"><div class="assign" id="2057693190560" data-parent="-1">
+x = 10
 </div>
 
 <div class="ifWrapper">
 
-<div class="if" id="2034412156864" data-parent="-1">
-if ((income >= 0) and (income <= 33389.0))
+<div class="if" id="2057693190608" data-parent="-1">
+if (x < 20)
 </div>
 
-<div class="assign" id="2034412157008" data-parent="2034412156864">
-incomeTax = (0.108 * income)
+<div class="assign" id="2057693190752" data-parent="2057693190608">
+x = 25
 </div>
 
-<div class="assign" id="2034412157056" data-parent="2034412156864">
-taxBracket = '10.80% [$0 ... $33,389.01)'
-</div>
-
-</div>
-
-<div class="ifWrapper">
-
-<div class="if" id="2034412157152" data-parent="2034412156864">
-if ((income >= 33389.01) and (income <= 72164.0))
-</div>
-
-<div class="assign" id="2034412157296" data-parent="2034412157152">
-incomeTax = (0.1275 * income)
-</div>
-
-<div class="assign" id="2034412157248" data-parent="2034412157152">
-taxBracket = '12.75% [$33,389.01 ... $72,164.01)'
+<div class="assign" id="2057693189552" data-parent="2057693190608">
+x = 26
 </div>
 
 </div>
 
-<div class="assign" id="2034412157344" data-parent="2034412157152">
-incomeTax = (0.174 * income)
+<div class="assign" id="2057693189504" data-parent="2057693190608">
+x = 30
 </div>
 
-<div class="assign" id="2034412157392" data-parent="2034412157152">
-taxBracket = '17.40% [$72,164.01 ..)'
+<div class="forWrapper"><div class="for" id="2057693190656" data-parent="-1">
+for i in range(1, 11)
 </div>
 
-<div class="expr" id="2034412156960" data-parent="-1">
-print(f'''
-Employee's provincial tax value: CAD($) {format(incomeTax, '.2f')}''')
+<div class="assign" id="2057693189408" data-parent="2057693190656">
+x += 1
 </div>
 
-<div class="expr" id="2034412157200" data-parent="-1">
-print(f"Employee's provincial tax bracket : {taxBracket}")
+<div class="expr" id="2057693189360" data-parent="2057693190656">
+print((x - 1))
+</div>
+
+</div>
+
+<div class="expr" id="2057693189456" data-parent="-1">
+print((x - 2))
+</div>
+
+<div class="expr" id="2057693189312" data-parent="-1">
+print(x)
 </div>
 
 
