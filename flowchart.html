@@ -81,6 +81,7 @@
         .ifWrapper, .whileWrapper {
             /* display: inline-block; */
             /* display: flex; */
+            display: grid;
         }
         .ifWrapper > div, .whileWrapper > div, .forWrapper > div {
             /* float: left; */
@@ -89,54 +90,63 @@
     </style>
     <body>
         <div class="start" id="start">Start</div>
-        <div class="insert" id="insert"><div class="assign" id="2057693190560" data-parent="-1">
+        <div class="insert" id="insert"><div class="assign" id="2316440893280" data-parent="-1">
 x = 10
+</div>
+
+<div class="assign" id="2316440893328" data-parent="-1">
+i = 0
+</div>
+
+<div class="whileWrapper"><div class="while" id="2316440893376" data-parent="-1">
+while (i < 20)
+</div>
+
+<div class="assign" id="2316440893472" data-parent="2316440893376">
+x += 1
 </div>
 
 <div class="ifWrapper">
 
-<div class="if" id="2057693190608" data-parent="-1">
-if (x < 20)
+<div class="if" id="2316440893520" data-parent="2316440893376">
+if ((x + (i % 2)) == 0)
 </div>
 
-<div class="assign" id="2057693190752" data-parent="2057693190608">
-x = 25
+<div class="expr" id="2316440816176" data-parent="2316440893520">
+print('x + i is even')
 </div>
 
-<div class="assign" id="2057693189552" data-parent="2057693190608">
-x = 26
+<div class="forWrapper"><div class="for" id="2316440815072" data-parent="2316440893520">
+for j in range(0, 11)
 </div>
 
-</div>
-
-<div class="assign" id="2057693189504" data-parent="2057693190608">
-x = 30
-</div>
-
-<div class="forWrapper"><div class="for" id="2057693190656" data-parent="-1">
-for i in range(1, 11)
-</div>
-
-<div class="assign" id="2057693189408" data-parent="2057693190656">
-x += 1
-</div>
-
-<div class="expr" id="2057693189360" data-parent="2057693190656">
-print((x - 1))
+<div class="expr" id="2316440817472" data-parent="2316440815072">
+print('yay')
 </div>
 
 </div>
 
-<div class="expr" id="2057693189456" data-parent="-1">
-print((x - 2))
+<div class="expr" id="2316440815216" data-parent="2316440893520">
+print('yays are done')
 </div>
 
-<div class="expr" id="2057693189312" data-parent="-1">
-print(x)
 </div>
 
+<div class="assign" id="2316440893568" data-parent="2316440893376">
+i += 1
+</div>
 
+<div class="expr" id="2316440815552" data-parent="2316440893376">
+print('this loop cycled')
+</div>
+
+</div>
+
+<div class="expr" id="2316440893424" data-parent="-1">
+print('program over')
+</div>
+
+<div class="end" id="end">End</div>
         </div>
-        <div class="end" id="end">End</div>
     </body>
 </html>

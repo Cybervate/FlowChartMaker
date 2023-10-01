@@ -13,22 +13,57 @@
 # else:
 #     x = 30
 
+# x = 10
+
+# if x < 20:
+#     x = 25
+#     x = 26
+#     if x == 10:
+#         print(x+2)
+# else:
+#     x = 30
+
+# print("XX")
+
+# for i in range(1, 11):
+#     x += 1
+#     print(x-1)
+#     if x == 10:
+#         x = 11
+#         print(x-34)
+#     print(x+212)
+
+# x = 0
+# while x < 10:
+#     x += 1
+
+# print('done')
+
 x = 10
 
-if x < 20:
-    x = 25
-    x = 26
-else:
-    x = 30
-
-#print("XX")
-
-for i in range(1, 11):
+i = 0
+while i < 20:
     x += 1
-    print(x-1)
+    if x + i % 2 == 0:
+        print('x + i is even')
+        for j in range (0, 11):
+            print('yay')
+        print('yays are done')
+    elif x + i % 5 == 0:
+        print('5s are okay')
+        for j in range(0, 3):
+            print('meh')
+    else:
+        print('ODDS')
+        print('oh no')
+    i += 1
+    print('this loop cycled')
 
-print(x-2)
-print(x)
+print('program over')
+        
+
+# print(x-2)
+# print(x)
 
 # print(x)
 

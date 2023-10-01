@@ -10,7 +10,7 @@ file = open(filename, "r")
 tree = ast.parse(file.read())
 print(ast.dump(tree, indent=4))
 
-def splitTree(tree, parent):
+def splitTree(tree, parent, elseQ):
     export = []
     for item in tree:
         itemType = str(item.__class__).split("'")[1].split(".")[1]
@@ -20,21 +20,27 @@ def splitTree(tree, parent):
             export.append(codeItem('expr', astunparse.unparse(item), item, -1, -1, parent, -1))
         elif itemType == "For":
             c = codeItem('for', astunparse.unparse(item), item, -1, -1, parent, -1)
-            c.body = splitTree(item.body, c.id)
+            c.body = splitTree(item.body, c.id, False)
             export.append(c)
         elif itemType == "While":
             c = codeItem('while', astunparse.unparse(item), item, -1, -1, parent, -1)
-            c.body = splitTree(item.body, c.id)
-            c.orelse = splitTree(item.orelse, c.id)
+            c.body = splitTree(item.body, c.id, False)
+            c.orelse = splitTree(item.orelse, c.id, False)
             export.append(c)
         elif itemType == 'If':
-            c = codeItem('if', astunparse.unparse(item), item, -1, -1, parent, -1)
-            c.body = splitTree(item.body, c.id)
-            c.orelse = splitTree(item.orelse, c.id)
-            export.append(c)
+            if elseQ:
+                c = codeItem('elif', astunparse.unparse(item), item, -1, -1, parent, -1)
+                c.body = splitTree(item.body, c.id, False)
+                c.orelse = splitTree(item.orelse, c.id, True)
+                export.append(c)
+            else:
+                c = codeItem('if', astunparse.unparse(item), item, -1, -1, parent, -1)
+                c.body = splitTree(item.body, c.id, False)
+                c.orelse = splitTree(item.orelse, c.id, True)
+                export.append(c)
     return export
 
-finTree = splitTree(tree.body, -1)
+finTree = splitTree(tree.body, -1, False)
 
 def printTree(tree):
     export = ""
@@ -66,9 +72,8 @@ def printTree(tree):
 
 html += printTree(finTree)
 
-html += """
+html += """<div class="end" id="end">End</div>
         </div>
-        <div class="end" id="end">End</div>
     </body>
 </html>"""
 
