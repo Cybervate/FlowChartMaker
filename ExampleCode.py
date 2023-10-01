@@ -8,6 +8,8 @@
 #     x = 31
 #     if x != 40:
 #         print(x-1)
+#     else:
+#         print(x-2)
 # else:
 #     x = 30
 

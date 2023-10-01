@@ -1,22 +1,11 @@
 import ast
 import astunparse
-from collections import deque
 from obs import codeItem
 
-def walk(node):
-    queue = deque([node])
-    while queue:
-        node = queue.popleft()
-        if isinstance(node, tuple):
-            queue.extend(node[1:])  # add the children to the queue
-        yield node
-
-html = ''
 with open('import.html', "r") as h:
     html = h.read()
 
 filename = "ExampleCode.py"
-    
 file = open(filename, "r")
 tree = ast.parse(file.read())
 print(ast.dump(tree, indent=4))

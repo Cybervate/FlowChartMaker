@@ -9,15 +9,7 @@ new LeaderLine(
 )
 
 function loop(list, nextElem, startDirection, endDirection, side) {
-    if (side == 0) {
-        locSide = 0
-    }
-    else if (side == 0.5) {
-        locSide = nextElem.offsetWidth / 2
-    }
-    else {
-        locSide = nextElem.offsetWidth
-    }
+    locSide = 100*side
     for (let i = 0; i < list.length; i++) {
         console.log(list.item(i))
         
@@ -25,6 +17,8 @@ function loop(list, nextElem, startDirection, endDirection, side) {
             if (list.item(i).className == 'ifWrapper') {
 
                 new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 0,y: 50}), {startLabel: 'false'})
+
+                
 
                 for (let j = i; j < list.length; j++) {
                     if (list.item(j).getAttribute('data-parent') != list.item(i).getAttribute('data-parent')) {
@@ -40,9 +34,12 @@ function loop(list, nextElem, startDirection, endDirection, side) {
             }
             else if (list.item(i).className == 'while') {
                 new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 50,y: 50}), {startLabel: 'True'})
+
+                
             }
             else if (list.item(i).className == 'if') {
                 new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 50,y: 50}), {startLabel: 'True'})
+
             }
             else { 
                 new LeaderLine(list.item(i), LeaderLine.pointAnchor(list.item(i+1), {x: 50,y: 50}))
