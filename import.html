@@ -4,6 +4,10 @@
     <script src="arrows.js" defer></script>
     </script>
     <style>
+        body {
+            margin-left: 50px;
+
+        }
         .start, .end {
             width: 100px;
             height: 100px;
@@ -23,6 +27,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            margin: 30px;
         }
         .assign {
             width: 100px;
@@ -31,8 +37,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            margin: 30px;
         }
-        .if {
+        .if, .while {
+            width: 100px;
+            height: 50px;
+            background: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            margin: 30px;
+        }
+        /* .if {
             position: relative;
             height: 200px;
             width: 200px;
@@ -55,12 +73,12 @@
             top: 10px;
             left: 10px;
             content: '';
-            height: calc(100% - 22px);  /* -22px is 2 * 10px gap on either side - 2px border on either side */
-            width: calc(100% - 22px);  /* -22px is 2 * 10px gap on either side - 2px border on either side */
+            height: calc(100% - 22px);
+            width: calc(100% - 22px);
             border: 1px solid orange;
             transform: rotateX(45deg) rotateZ(45deg);
-        }
-        .ifWrapper {
+        } */
+        .ifWrapper, .whileWrapper {
             /* display: inline-block; */
             display: flex;
         }

@@ -4,6 +4,10 @@
     <script src="arrows.js" defer></script>
     </script>
     <style>
+        body {
+            margin-left: 50px;
+
+        }
         .start, .end {
             width: 100px;
             height: 100px;
@@ -23,6 +27,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            margin: 30px;
         }
         .assign {
             width: 100px;
@@ -31,8 +37,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            margin: 30px;
         }
-        .if {
+        .if, .while {
+            width: 100px;
+            height: 50px;
+            background: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            margin: 30px;
+        }
+        /* .if {
             position: relative;
             height: 200px;
             width: 200px;
@@ -55,60 +73,79 @@
             top: 10px;
             left: 10px;
             content: '';
-            height: calc(100% - 22px);  /* -22px is 2 * 10px gap on either side - 2px border on either side */
-            width: calc(100% - 22px);  /* -22px is 2 * 10px gap on either side - 2px border on either side */
+            height: calc(100% - 22px);
+            width: calc(100% - 22px);
             border: 1px solid orange;
             transform: rotateX(45deg) rotateZ(45deg);
-        }
-        .ifWrapper {
+        } */
+        .ifWrapper, .whileWrapper {
             /* display: inline-block; */
             display: flex;
         }
     </style>
     <body>
         <div class="start" id="start">Start</div>
-        <div class="insert" id="insert"><div class="assign" id="1630268260016" data-parent="-1">
-x = 10
+        <div class="insert" id="insert"><div class="assign" id="2794412508592" data-parent="-1">
+income = float(input("Please Enter employee's annual taxable income ... CAD($) "))
 </div>
 
-<div class="ifWrapper">
-
-<div class="if" id="1630268259968" data-parent="-1">
-if (x < 20)
+<div class="whileWrapper"><div class="while" id="2794412508640" data-parent="-1">
+while (income < 0)
 </div>
 
-<div class="assign" id="1630268260304" data-parent="1630268259968">
-x = 25
-</div>
-
-<div class="assign" id="1630268259584" data-parent="1630268259968">
-x = 26
-</div>
-
-<div class="expr" id="1630268259488" data-parent="1630268259968">
-print((x + 10))
+<div class="assign" id="2794412508736" data-parent="2794412508640">
+income = float(input("Value must be positive. Please Enter employee's annual taxable income ... CAD($) "))
 </div>
 
 </div>
 
 <div class="ifWrapper">
 
-<div class="if" id="1630268259296" data-parent="1630268259968">
-if (x == 20)
+<div class="if" id="2794412508688" data-parent="-1">
+if ((income >= 0) and (income <= 33389.0))
 </div>
 
-<div class="assign" id="1630268259200" data-parent="1630268259296">
-x = 31
+<div class="assign" id="2794412508832" data-parent="2794412508688">
+incomeTax = (0.108 * income)
+</div>
+
+<div class="assign" id="2794412510416" data-parent="2794412508688">
+taxBracket = '10.80% [$0 ... $33,389.01)'
 </div>
 
 </div>
 
-<div class="assign" id="1630268259248" data-parent="1630268259296">
-x = 30
+<div class="ifWrapper">
+
+<div class="if" id="2794412510464" data-parent="2794412508688">
+if ((income >= 33389.01) and (income <= 72164.0))
 </div>
 
-<div class="expr" id="1630268260256" data-parent="-1">
-print(x)
+<div class="assign" id="2794412510608" data-parent="2794412510464">
+incomeTax = (0.1275 * income)
+</div>
+
+<div class="assign" id="2794412510560" data-parent="2794412510464">
+taxBracket = '12.75% [$33,389.01 ... $72,164.01)'
+</div>
+
+</div>
+
+<div class="assign" id="2794412510656" data-parent="2794412510464">
+incomeTax = (0.174 * income)
+</div>
+
+<div class="assign" id="2794412510752" data-parent="2794412510464">
+taxBracket = '17.40% [$72,164.01 ..)'
+</div>
+
+<div class="expr" id="2794412508784" data-parent="-1">
+print(f'''
+Employee's provincial tax value: CAD($) {format(incomeTax, '.2f')}''')
+</div>
+
+<div class="expr" id="2794412510512" data-parent="-1">
+print(f"Employee's provincial tax bracket : {taxBracket}")
 </div>
 
 
