@@ -1,11 +1,36 @@
 import ast
 import astunparse
 from obs import codeItem
+import sys
 
-with open('import.html', "r") as h:
+if len(sys.argv) > 1:
+    filename = sys.argv[1] 
+else:
+    filename = "ExampleCode.py"
+
+if len(sys.argv) > 2:
+    importname = sys.argv[2] 
+else:
+    importname = "import.html"
+
+if len(sys.argv) > 3:
+    flowname = sys.argv[3] 
+else:
+    flowname = "flowchart.html"
+
+if len(sys.argv)  > 4:
+    leadername = sys.argv[4] 
+else:
+    leadername = "leader-line.min.js"
+
+if len(sys.argv)> 5:
+    arrowname = sys.argv[5] 
+else:
+    arrowname = "arrows.js"
+
+with open(importname, "r") as h:
     html = h.read()
 
-filename = "ExampleCode.py"
 file = open(filename, "r")
 tree = ast.parse(file.read())
 print(ast.dump(tree, indent=4))
@@ -72,9 +97,11 @@ def printTree(tree):
 
 html += printTree(finTree)
 
-html += """<div class="end" id="end">End</div>
+html += f"""<div class="end" id="end">End</div>
         </div>
     </body>
+    <script src="{leadername}"></script>
+    <script src="{arrowname}" defer></script>
 </html>"""
 
 print(finTree)
@@ -84,6 +111,6 @@ for item in finTree:
         for j in item.orelse:
             print(f'\tVariant: {j.variant}, Content: {j.content}')
 
-f = open("flowchart.html", "w")
+f = open(flowname, "w")
 f.write(html)
 f.close()
