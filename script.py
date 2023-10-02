@@ -97,11 +97,17 @@ def printTree(tree):
 
 html += printTree(finTree)
 
+with open(arrowname, "r") as h:
+    arrow = h.read()
+
+with open(leadername, "r") as h:
+    leader = h.read()
+
 html += f"""<div class="end" id="end">End</div>
         </div>
     </body>
-    <script src="{leadername}"></script>
-    <script src="{arrowname}" defer></script>
+    <script>{leader}</script>
+    <script>{arrow}</script>
 </html>"""
 
 print(finTree)
