@@ -1,17 +1,17 @@
-# x = 10
+x = 10
 
-# if x < 20:
-#     x = 25
-#     x = 26
-#     print(x + 10)
-# elif x == 20:
-#     x = 31
-#     if x != 40:
-#         print(x-1)
-#     else:
-#         print(x-2)
-# else:
-#     x = 30
+if x < 20:
+    x = 25
+    x = 26
+    print(x + 10)
+elif x == 20:
+    x = 31
+    if x != 40:
+        print(x-1)
+    else:
+        print(x-2)
+else:
+    x = 30
 
 # x = 10
 
@@ -39,27 +39,27 @@
 
 # print('done')
 
-x = 10
+# x = 10
 
-i = 0
-while i < 20:
-    x += 1
-    if x + i % 2 == 0:
-        print('x + i is even')
-        for j in range (0, 11):
-            print('yay')
-        print('yays are done')
-    elif x + i % 5 == 0:
-        print('5s are okay')
-        for j in range(0, 3):
-            print('meh')
-    else:
-        print('ODDS')
-        print('oh no')
-    i += 1
-    print('this loop cycled')
+# i = 0
+# while i < 20:
+#     x += 1
+#     if x + i % 2 == 0:
+#         print('x + i is even')
+#         for j in range (0, 11):
+#             print('yay')
+#         print('yays are done')
+#     elif x + i % 5 == 0:
+#         print('5s are okay')
+#         for j in range(0, 3):
+#             print('meh')
+#     else:
+#         print('ODDS')
+#         print('oh no')
+#     i += 1
+#     print('this loop cycled')
 
-print('program over')
+# print('program over')
         
 
 # print(x-2)

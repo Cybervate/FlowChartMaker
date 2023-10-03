@@ -3,38 +3,6 @@ import astunparse
 from obs import codeItem
 import sys
 
-if len(sys.argv) > 1:
-    filename = sys.argv[1] 
-else:
-    filename = "ExampleCode.py"
-
-if len(sys.argv) > 2:
-    importname = sys.argv[2] 
-else:
-    importname = "import.html"
-
-if len(sys.argv) > 3:
-    flowname = sys.argv[3] 
-else:
-    flowname = "flowchart.html"
-
-if len(sys.argv)  > 4:
-    leadername = sys.argv[4] 
-else:
-    leadername = "leader-line.min.js"
-
-if len(sys.argv)> 5:
-    arrowname = sys.argv[5] 
-else:
-    arrowname = "arrows.js"
-
-with open(importname, "r") as h:
-    html = h.read()
-
-file = open(filename, "r")
-tree = ast.parse(file.read())
-print(ast.dump(tree, indent=4))
-
 def splitTree(tree, parent, elseQ):
     export = []
     for item in tree:
@@ -65,8 +33,6 @@ def splitTree(tree, parent, elseQ):
                 export.append(c)
     return export
 
-finTree = splitTree(tree.body, -1, False)
-
 def printTree(tree):
     export = ""
     for item in tree:
@@ -95,28 +61,73 @@ def printTree(tree):
     
     return export
 
-html += printTree(finTree)
+def main():
 
-with open(arrowname, "r") as h:
-    arrow = h.read()
+    if len(sys.argv) > 1:
+        filename = sys.argv[1] 
+    else:
+        filename = "ExampleCode.py"
 
-with open(leadername, "r") as h:
-    leader = h.read()
+    if len(sys.argv) > 2:
+        importname = sys.argv[2] 
+    else:
+        importname = "import.html"
 
-html += f"""<div class="end" id="end">End</div>
-        </div>
-    </body>
-    <script>{leader}</script>
-    <script>{arrow}</script>
-</html>"""
+    if len(sys.argv) > 3:
+        flowname = sys.argv[3] 
+    else:
+        flowname = "flowchart.html"
 
-print(finTree)
-for item in finTree:
-    print(f'Variant: {item.variant}, Content: {item.content}')
-    if item.variant == "if":
-        for j in item.orelse:
-            print(f'\tVariant: {j.variant}, Content: {j.content}')
+    if len(sys.argv)  > 4:
+        leadername = sys.argv[4] 
+    else:
+        leadername = "leader-line.min.js"
 
-f = open(flowname, "w")
-f.write(html)
-f.close()
+    if len(sys.argv)> 5:
+        arrowname = sys.argv[5] 
+    else:
+        arrowname = "arrows.js"
+
+    with open(importname, "r") as h:
+        html = h.read()
+
+    file = open(filename, "r")
+    tree = ast.parse(file.read())
+    print(ast.dump(tree, indent=4))
+
+
+
+    finTree = splitTree(tree.body, -1, False)
+
+
+
+    html += printTree(finTree)
+
+    with open(arrowname, "r") as h:
+        arrow = h.read()
+
+    with open(leadername, "r") as h:
+        leader = h.read()
+
+    html += f"""<div class="end" id="end">End</div>
+            </div>
+        </body>
+        <script>{leader}</script>
+        <script>{arrow}</script>
+    </html>"""
+
+    print(finTree)
+    for item in finTree:
+        print(f'Variant: {item.variant}, Content: {item.content}')
+        if item.variant == "if":
+            for j in item.orelse:
+                print(f'\tVariant: {j.variant}, Content: {j.content}')
+
+    f = open(flowname, "w")
+    f.write(html)
+    f.close()
+
+    return html
+
+if __name__ == "__main__":
+    main()
