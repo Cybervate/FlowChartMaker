@@ -61,7 +61,32 @@ def printTree(tree):
     
     return export
 
-def main(filename, importname, flowname, leadername, arrowname):
+def main():
+
+    if len(sys.argv) > 1:
+        filename = sys.argv[1] 
+    else:
+        filename = "ExampleCode.py"
+
+    if len(sys.argv) > 2:
+        importname = sys.argv[2] 
+    else:
+        importname = "import.html"
+
+    if len(sys.argv) > 3:
+        flowname = sys.argv[3] 
+    else:
+        flowname = "flowchart.html"
+
+    if len(sys.argv)  > 4:
+        leadername = sys.argv[4] 
+    else:
+        leadername = "leader-line.min.js"
+
+    if len(sys.argv)> 5:
+        arrowname = sys.argv[5] 
+    else:
+        arrowname = "arrows.js"
 
     with open(importname, "r") as h:
         html = h.read()
